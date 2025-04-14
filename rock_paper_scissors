@@ -1,0 +1,48 @@
+import random
+
+u_wins = 0
+c_wins = 0
+
+choices = ["rock", "paper", "scissors"]
+
+while True:
+    u_input = input("Type Rock/Paper/Scissors or Q to quit: ").lower()
+    if u_input == "q":
+        print("Okay, see you later")
+        break
+    if u_input not in choices:
+        print("That's not a valid choice.")
+        continue
+
+    # rock: 0, paper: 1, scissors: 2
+    rand_numb = random.randint(0,2)
+
+    c_pick = choices[rand_numb]
+    print("Computer picked", c_pick + ".")
+    print(f"(DEBUG) rand_numb: {rand_numb}, c_pick: {c_pick}")
+
+    if u_input == "rock" and c_pick == "scissors":
+        print("You won!")
+        u_wins += 1
+        continue
+
+    elif u_input == "paper" and c_pick == "rock":
+        print("You won!")
+        u_wins += 1
+        continue
+
+    elif u_input == "scissors" and c_pick == "paper":
+        print("You won!")
+        u_wins += 1
+        continue
+    elif u_input == c_pick:
+        print("You tied!")
+        continue
+    else:
+        print("You lost!")
+        c_wins += 1
+
+
+print("You won", u_wins, "times.")
+print("The computer won", c_wins, "times")
+print("Goodbye!")
